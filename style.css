@@ -14,6 +14,10 @@ body {
 	width: 100%;
 	aspect-ratio: 1;
 }
+
+.backing.flipped {
+	display: none;
+}
 #game-board {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -21,13 +25,13 @@ body {
 	column-gap: 10px;
 	row-gap: 10px;
 	width: fit-content;
-	padding: 20px;
+	padding: 30px;
 	border-radius: 10%;
-	background-color: blue;
+	background-color: #4b4828;
 }
 .card {
 	aspect-ratio: 1;
-	width: 100px;
+	width: 150px;
 	border-radius: 10%;
 	overflow: hidden;
 	/* background-color: red; */

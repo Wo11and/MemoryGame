@@ -1,6 +1,7 @@
 const board = document.getElementById("game-board");
 
 let cards_array = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+let guesed = 0;
 
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -34,3 +35,33 @@ function generate_board() {
 }
 
 generate_board();
+
+let prevFlipped;
+
+board.addEventListener("click", (event) => {
+	console.log(event.target);
+	if (event.target.classList.contains("backing")) {
+		event.target.classList.add("flipped");
+	}
+
+	setTimeout(() => {
+		if (prevFlipped) {
+			if (
+				prevFlipped.parentElement.getAttribute("data-id") ==
+				event.target.parentElement.getAttribute("data-id")
+			) {
+				prevFlipped.classList.add("guessed");
+				event.target.classList.add("guesed");
+				guesed++;
+				console.log(guesed);
+				prevFlipped = "";
+			} else {
+				prevFlipped.classList.remove("flipped");
+				event.target.classList.remove("flipped");
+				prevFlipped = "";
+			}
+		} else {
+			prevFlipped = event.target;
+		}
+	}, 800);
+});
