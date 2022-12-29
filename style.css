@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box;
+	--board_color: #4e0c1a;
+	--bg_color: #544532;
 }
 
 body {
@@ -7,6 +9,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	background-color: var(--bg_color);
 }
 
 .backing,
@@ -27,12 +30,36 @@ body {
 	width: fit-content;
 	padding: 30px;
 	border-radius: 10%;
-	background-color: #4b4828;
+	background-color: var(--board_color);
+}
+
+#title-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: var(--board_color);
+	border-radius: 25px;
+	color: white;
+}
+
+.btn {
+	background-color: #113125;
+	cursor: pointer;
+	padding: 20px;
+	border-radius: 25px;
+	font-size: x-large;
+}
+
+.icon {
+	font-size: 3rem;
 }
 .card {
 	aspect-ratio: 1;
 	width: 150px;
 	border-radius: 10%;
 	overflow: hidden;
+	cursor: pointer;
 	/* background-color: red; */
 }

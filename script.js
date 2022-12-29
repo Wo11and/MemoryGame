@@ -2,6 +2,7 @@ const board = document.getElementById("game-board");
 
 let cards_array = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 let guesed = 0;
+let gameStarted = false;
 
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -39,6 +40,10 @@ generate_board();
 let prevFlipped;
 
 board.addEventListener("click", (event) => {
+	if (!event.target.classList.contains("backing")) {
+		return;
+	}
+
 	console.log(event.target);
 	if (event.target.classList.contains("backing")) {
 		event.target.classList.add("flipped");
