@@ -1,15 +1,19 @@
 * {
 	box-sizing: border-box;
-	--board_color: #4e0c1a;
-	--bg_color: #544532;
+	--board_color: #bd986b;
+	--bg_color: #8e8741;
+	--blue: #659ebc;
+	--selected: #fbeec1;
 }
 
 body {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
-	height: 100vh;
 	background-color: var(--bg_color);
+	margin: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .backing,
@@ -22,14 +26,16 @@ body {
 	display: none;
 }
 #game-board {
+	flex-grow: 2;
 	display: grid;
+	align-items: center;
+	justify-items: center;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr;
 	column-gap: 10px;
 	row-gap: 10px;
-	width: fit-content;
-	padding: 30px;
-	border-radius: 10%;
+	width: 100%;
+	padding: 1.5rem;
+	border-radius: 3rem;
 	background-color: var(--board_color);
 }
 
@@ -37,29 +43,93 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 20px;
-	margin-bottom: 20px;
+	padding: 0.9rem;
+	margin-bottom: 1.25rem;
 	background-color: var(--board_color);
-	border-radius: 25px;
+	border-radius: 20px;
 	color: white;
-}
-
-.btn {
-	background-color: #113125;
-	cursor: pointer;
-	padding: 20px;
-	border-radius: 25px;
-	font-size: x-large;
+	width: 100%;
 }
 
 .icon {
-	font-size: 3rem;
+	font-size: 2rem;
+	margin: 0.5rem;
 }
 .card {
 	aspect-ratio: 1;
-	width: 150px;
+	width: 5.5rem;
 	border-radius: 10%;
 	overflow: hidden;
 	cursor: pointer;
 	/* background-color: red; */
+}
+
+#login-field {
+	flex-grow: 2;
+	display: flex;
+	width: 100%;
+	padding: 1.5rem;
+	border-radius: 3rem;
+	background-color: var(--board_color);
+}
+
+.btn {
+	background-color: var(--blue);
+	font-size: 1.4rem;
+	border: 0;
+	border-radius: 1rem;
+	padding: 0.8rem;
+	cursor: pointer;
+	margin: 0.1rem;
+}
+
+.btn:hover {
+	background-color: var(--selected);
+}
+
+.selected {
+	background-color: var(--selected);
+}
+
+#login-selector {
+	background-color: var(--selected);
+	border-radius: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+#login-form {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	font-size: 1.5rem;
+}
+
+#login-form > * {
+	margin: 0.5rem;
+}
+
+input {
+	font-size: 2rem;
+}
+
+label {
+	background-color: var(--blue);
+	width: fit-content;
+	padding: 0.5rem;
+	border-radius: 1rem;
+}
+@media only screen and (max-width: 600px) {
+	#game-board {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	#title-bar {
+		flex-wrap: wrap;
+		margin-bottom: 0.5 rem;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	:root {
+		font-size: 25px;
+	}
 }
