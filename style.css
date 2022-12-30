@@ -122,6 +122,28 @@ label {
 	padding: 0.5rem;
 	border-radius: 1rem;
 }
+
+/* laptops */
+@media only screen and (min-width: 992px) {
+	:root {
+		font-size: 16px;
+	}
+}
+
+/* big screens */
+@media only screen and (min-width: 1300px) {
+	:root {
+		font-size: 25px;
+	}
+}
+
+/* tablets */
+@media only screen and (max-width: 992px) {
+	:root {
+		font-size: 25px;
+	}
+}
+/* phones */
 @media only screen and (max-width: 600px) {
 	#game-board {
 		grid-template-columns: 1fr 1fr 1fr;
@@ -130,10 +152,7 @@ label {
 		flex-wrap: wrap;
 		margin-bottom: 0.5 rem;
 	}
-}
-
-@media only screen and (min-width: 600px) {
 	:root {
-		font-size: 25px;
+		font-size: 16px;
 	}
 }

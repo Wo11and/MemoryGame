@@ -1,4 +1,35 @@
 const board = document.getElementById("game-board");
+const start_btn = document.getElementById("start-btn");
+const restart_btn = document.getElementById("restart-btn");
+
+const local_storage = JSON.parse(localStorage.getItem("users"));
+let users = local_storage ? local_storage : [];
+
+class user {
+	constructor(email, password) {
+		this.email = email;
+		this.password = password;
+		this.high_score = 0;
+	}
+}
+
+let started = false;
+let start;
+let finish;
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const email = urlParams.get("email") ? urlParams.get("email") : false;
+
+if (!email) {
+	window.location = "./login.html";
+}
+const username = email.substring(0, email.indexOf("@"));
+const username_field = document.getElementById("username");
+username_field.innerText = username;
+
+start_btn.addEventListener("click", startGame);
+restart_btn.addEventListener("click", restartGame);
 
 let cards_array = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 let guesed = 0;
@@ -13,6 +44,9 @@ function shuffleArray(array) {
 
 shuffleArray(cards_array);
 
+function clear_board() {
+	board.innerHTML = "";
+}
 function generate_board() {
 	cards_array.forEach((element) => {
 		const card = document.createElement("div");
@@ -44,6 +78,10 @@ board.addEventListener("click", (event) => {
 		return;
 	}
 
+	if (!started) {
+		return;
+	}
+
 	console.log(event.target);
 	if (event.target.classList.contains("backing")) {
 		event.target.classList.add("flipped");
@@ -60,6 +98,7 @@ board.addEventListener("click", (event) => {
 				guesed++;
 				console.log(guesed);
 				prevFlipped = "";
+				checkWin();
 			} else {
 				prevFlipped.classList.remove("flipped");
 				event.target.classList.remove("flipped");
@@ -70,3 +109,42 @@ board.addEventListener("click", (event) => {
 		}
 	}, 800);
 });
+
+function startGame() {
+	if (started) {
+		return;
+	}
+	started = true;
+	start = Date.now();
+}
+
+function restartGame() {
+	if (!started) {
+		return;
+	}
+
+	shuffleArray(cards_array);
+	clear_board();
+	generate_board();
+	start = Date.now();
+}
+
+function checkWin() {
+	if (guesed == 8) {
+		finish = Date.now();
+	} else {
+		return;
+	}
+
+	const elapsed = finish - start;
+	console.log(elapsed);
+	users.forEach((usr) => {
+		if (usr.email == email) {
+			if (!usr.high_score || usr.high_score > elapsed) {
+				usr.high_score = elapsed;
+			}
+
+			localStorage.setItem("users", JSON.stringify(users));
+		}
+	});
+}
