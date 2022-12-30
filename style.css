@@ -91,6 +91,10 @@ body {
 	background-color: var(--selected);
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
 #login-selector {
 	background-color: var(--selected);
 	border-radius: 1rem;
