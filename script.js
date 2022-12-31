@@ -5,14 +5,6 @@ const restart_btn = document.getElementById("restart-btn");
 const local_storage = JSON.parse(localStorage.getItem("users"));
 let users = local_storage ? local_storage : [];
 
-class user {
-	constructor(email, password) {
-		this.email = email;
-		this.password = password;
-		this.high_score = 0;
-	}
-}
-
 let started = false;
 let start;
 let finish;
@@ -22,7 +14,7 @@ const urlParams = new URLSearchParams(queryString);
 const email = urlParams.get("email") ? urlParams.get("email") : false;
 
 if (!email) {
-	window.location = "./login.html";
+	window.location = "./index.html";
 }
 const username = email.substring(0, email.indexOf("@"));
 const username_field = document.getElementById("username");
@@ -127,6 +119,7 @@ function restartGame() {
 	clear_board();
 	generate_board();
 	start = Date.now();
+	hideWinnerScreen();
 }
 
 function checkWin() {
@@ -145,6 +138,23 @@ function checkWin() {
 			}
 
 			localStorage.setItem("users", JSON.stringify(users));
+
+			showWinnerScreen(
+				`Congratulations! You won. Elapsed time: ${Math.floor(
+					elapsed / 60000
+				)} . ${elapsed % 60} min`
+			);
 		}
 	});
+}
+
+const winnerScreen = document.getElementById("winner-screen");
+
+function showWinnerScreen(msg) {
+	winnerScreen.innerText = msg;
+	winnerScreen.classList.remove("hidden");
+}
+
+function hideWinnerScreen() {
+	winnerScreen.classList.add("hidden");
 }

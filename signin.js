@@ -21,12 +21,12 @@ function login() {
 		console.log(email);
 		if (usr.email == email && usr.password == password) {
 			succes = true;
-			window.location = `./index.html?email=${email}`;
+			window.location = `./game.html?email=${email}`;
 		}
 	});
 
 	if (!succes) {
-		showError("User not found");
+		showError("User password combination not found");
 	}
 }
 

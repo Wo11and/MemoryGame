@@ -19,10 +19,10 @@ function register() {
 
 	// Validate input fields
 	if (
-		validate_email(email) == false ||
-		validate_password(password) == false ||
+		!validate_email(email) ||
+		!validate_password(password) ||
 		!validate_field(password) ||
-		validate_field(email)
+		!validate_field(email)
 	) {
 		showError("Invalid email or password!");
 		return;

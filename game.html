@@ -12,18 +12,28 @@
 			href="https://fonts.googleapis.com/css2?family=Martel:wght@300;400;700&display=swap"
 			rel="stylesheet"
 		/>
-
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<div class="wrapper">
 			<div id="title-bar">
-				<h1>Leader board</h1>
+				<!-- <span class="material-symbols-outlined icon"> timer </span> -->
+				<span class="material-symbols-outlined icon"> person </span>
+				<span id="username"></span>
+				<div class="btn" id="start-btn">Play</div>
+				<div class="btn" id="restart-btn">Restart</div>
+				<div class="leaderboard btn">
+					<a href="leaderboard.html">Leaderboard</a>
+				</div>
 			</div>
 
-			<div id="leader-board">
-				<ul id="ranking"></ul>
-			</div>
+			<div id="winner-screen" class="hidden">Congratulations you won!</div>
+			<div id="game-board"></div>
+
 			<div id="notes">
 				<span
 					>All moodies courtesy of
@@ -32,6 +42,6 @@
 			</div>
 		</div>
 
-		<script src="leader.js"></script>
+		<script src="./script.js"></script>
 	</body>
 </html>
