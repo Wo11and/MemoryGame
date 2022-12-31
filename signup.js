@@ -12,26 +12,26 @@ class user {
 const signup_btn = document.getElementById("signup-btn");
 signup_btn.addEventListener("click", register);
 
-const login_btn = document.getElementById("login-btn");
-login_btn.addEventListener("click", login);
-
 // Set up our register function
 function register() {
-	// Get all our input fields
 	const email = document.getElementById("email").value;
 	const password = document.getElementById("passwd").value;
 
 	// Validate input fields
-	if (validate_email(email) == false || validate_password(password) == false) {
-		alert("Email or Password invalid");
+	if (
+		validate_email(email) == false ||
+		validate_password(password) == false ||
+		!validate_field(password) ||
+		validate_field(email)
+	) {
+		showError("Invalid email or password!");
 		return;
-		// Don't continue running the code
 	}
 
 	let flag = true;
 	users.forEach((usr) => {
 		if (usr.email == email) {
-			alert("User exists!");
+			showError("User exists!");
 			flag = false;
 			return;
 		}
@@ -77,4 +77,10 @@ function validate_field(field) {
 	} else {
 		return true;
 	}
+}
+
+const error = document.getElementById("error");
+function showError(msg) {
+	error.innerText = msg;
+	error.classList.remove("hidden");
 }
