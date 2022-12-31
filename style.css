@@ -25,7 +25,8 @@ body {
 .backing.flipped {
 	display: none;
 }
-#game-board {
+#game-board,
+#leader-board {
 	flex-grow: 2;
 	display: grid;
 	align-items: center;
@@ -37,6 +38,11 @@ body {
 	padding: 1.5rem;
 	border-radius: 3rem;
 	background-color: var(--board_color);
+}
+
+#leader-board {
+	flex-direction: column;
+	display: flex;
 }
 
 #title-bar {
@@ -110,6 +116,27 @@ a {
 
 #login-form > * {
 	margin: 0.5rem;
+}
+
+h1 {
+	margin: 0 auto;
+}
+
+ul {
+	list-style: none;
+	margin-left: 0;
+	padding: 0;
+	width: 20rem;
+	display: block;
+}
+
+li {
+	background-color: var(--blue);
+	padding: 1rem;
+	border-radius: 2rem;
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
 }
 
 input {
