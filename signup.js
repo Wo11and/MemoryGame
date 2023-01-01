@@ -1,3 +1,4 @@
+//retrieve data from local sorage
 const local_storage = JSON.parse(localStorage.getItem("users"));
 let users = local_storage ? local_storage : [];
 
@@ -13,7 +14,6 @@ const succesBanner = document.getElementById("succes");
 const signup_btn = document.getElementById("signup-btn");
 signup_btn.addEventListener("click", register);
 
-// Set up our register function
 function register() {
 	const email = document.getElementById("email").value;
 	const password = document.getElementById("passwd").value;
@@ -48,23 +48,20 @@ function register() {
 	succesBanner.classList.remove("hidden");
 	setTimeout(() => {
 		succesBanner.classList.add("hidden");
-	}, 1000);
+	}, 2000);
 }
 
 // Validate Functions
 function validate_email(email) {
 	const expression = /^[^@]+@\w+(\.\w+)+\w$/;
 	if (expression.test(email) == true) {
-		// Email is good
 		return true;
 	} else {
-		// Email is not good
 		return false;
 	}
 }
 
 function validate_password(password) {
-	// Firebase only accepts lengths greater than 6
 	if (password < 6) {
 		return false;
 	} else {

@@ -1,13 +1,6 @@
+//retrieve data from local storage
 const local_storage = JSON.parse(localStorage.getItem("users"));
 let users = local_storage ? local_storage : [];
-
-class user {
-	constructor(email, password) {
-		this.email = email;
-		this.password = password;
-		this.high_score = 0;
-	}
-}
 
 const login_btn = document.getElementById("login-btn");
 login_btn.addEventListener("click", login);
