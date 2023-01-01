@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	--board_color: #bd986b;
 	--bg_color: #8e8741;
-	--blue: #659ebc;
+	--blue: #3c5559;
 	--selected: #fbeec1;
 	--red: #ff6961;
 	--green: #c1e1c1;
@@ -25,7 +25,7 @@ body {
 	background-color: var(--bg_color);
 	padding: 1rem;
 	font-family: "Martel", serif;
-
+	color: white;
 	height: 100%;
 }
 
@@ -38,12 +38,8 @@ body {
 .backing.flipped {
 	display: none;
 }
-#game-board,
-#leader-board,
-#notes {
-	flex-grow: 2;
+#game-board {
 	display: grid;
-	align-items: center;
 	justify-items: center;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	row-gap: 0.6rem;
@@ -58,6 +54,10 @@ body {
 	margin-top: 1rem;
 	flex-direction: column;
 	display: flex;
+	align-items: center;
+	padding: 1.5rem;
+	border-radius: 3rem;
+	background-color: var(--board_color);
 }
 
 #title-bar {
@@ -69,7 +69,6 @@ body {
 	margin-bottom: 1.25rem;
 	background-color: var(--board_color);
 	border-radius: 1.25rem;
-	color: white;
 	width: 100%;
 }
 
@@ -95,7 +94,6 @@ body {
 	border-radius: 10%;
 	overflow: hidden;
 	cursor: pointer;
-	/* background-color: red; */
 }
 
 #login-field {
@@ -116,6 +114,7 @@ body {
 	cursor: pointer;
 	margin: 0.1rem;
 	font-family: inherit;
+	color: inherit;
 }
 
 .btn:hover {
@@ -126,13 +125,13 @@ body {
 	background-color: var(--selected);
 }
 
-#winner-screen {
+#winner-screen,
+#succes {
 	background-color: var(--green);
 	border-radius: 1rem;
 	padding: 1rem;
 	width: 100%;
 	margin-bottom: 1rem;
-	top: 50%;
 }
 
 a {
@@ -170,6 +169,7 @@ ul {
 	padding: 0;
 	width: 20rem;
 	display: block;
+	color: black;
 }
 
 li {

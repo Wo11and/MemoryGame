@@ -9,6 +9,7 @@ class user {
 	}
 }
 
+const succesBanner = document.getElementById("succes");
 const signup_btn = document.getElementById("signup-btn");
 signup_btn.addEventListener("click", register);
 
@@ -44,6 +45,10 @@ function register() {
 	let to_add = new user(email, password);
 	users.push(to_add);
 	localStorage.setItem("users", JSON.stringify(users));
+	succesBanner.classList.remove("hidden");
+	setTimeout(() => {
+		succesBanner.classList.add("hidden");
+	}, 1000);
 }
 
 // Validate Functions

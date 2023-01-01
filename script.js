@@ -9,14 +9,8 @@ let started = false;
 let start;
 let finish;
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const email = urlParams.get("email") ? urlParams.get("email") : false;
-
-if (!email) {
-	window.location = "./index.html";
-}
-const username = email.substring(0, email.indexOf("@"));
+const email = sessionStorage.getItem("activeUser");
+const username = email.slice(0, email.indexOf("@"));
 const username_field = document.getElementById("username");
 username_field.innerText = username;
 
@@ -115,6 +109,7 @@ function restartGame() {
 		return;
 	}
 
+	guesed = 0;
 	shuffleArray(cards_array);
 	clear_board();
 	generate_board();
@@ -133,7 +128,7 @@ function checkWin() {
 	console.log(elapsed);
 	users.forEach((usr) => {
 		if (usr.email == email) {
-			if (!usr.high_score || usr.high_score > elapsed) {
+			if (usr.high_score == 0 || usr.high_score > elapsed) {
 				usr.high_score = elapsed;
 			}
 

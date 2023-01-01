@@ -21,7 +21,8 @@ function login() {
 		console.log(email);
 		if (usr.email == email && usr.password == password) {
 			succes = true;
-			window.location = `./game.html?email=${email}`;
+			sessionStorage.setItem("activeUser", usr.email);
+			window.location.replace("./game.html");
 		}
 	});
 

@@ -13,6 +13,9 @@ users.sort(sortByTime);
 const ranking = document.getElementById("ranking");
 
 for (let i = 0; i < Math.min(users.length, 5); i++) {
+	if (users[i].high_score == 0) {
+		continue;
+	}
 	const li = document.createElement("li");
 	const username = document.createElement("span");
 	username.innerText = users[i].email;
