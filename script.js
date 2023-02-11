@@ -38,10 +38,10 @@ function clear_board() {
 }
 
 function generate_board() {
-	cards_array.forEach((element) => {
+	cards_array.forEach((element, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.setAttribute("data-id", element);
+		card.setAttribute("data-id", index);
 
 		const backing_img = document.createElement("img");
 		backing_img.classList.add("backing");
@@ -81,8 +81,8 @@ board.addEventListener("click", (event) => {
 		//add timeout so the cards dont't get flipped back immediately
 		if (prevFlipped) {
 			if (
-				prevFlipped.parentElement.getAttribute("data-id") ==
-				event.target.parentElement.getAttribute("data-id")
+				cards_array[prevFlipped.parentElement.getAttribute("data-id")] ==
+				cards_array[event.target.parentElement.getAttribute("data-id")]
 			) {
 				prevFlipped.classList.add("guessed");
 				event.target.classList.add("guesed");
@@ -92,7 +92,7 @@ board.addEventListener("click", (event) => {
 				prevFlipped.classList.remove("flipped");
 				event.target.classList.remove("flipped");
 			}
-			prevFlipped = "";
+			prevFlipped = null;
 		} else {
 			prevFlipped = event.target;
 		}
@@ -114,6 +114,7 @@ function restartGame() {
 		return;
 	}
 
+	prevFlipped = null;
 	guesed = 0;
 	shuffleArray(cards_array);
 	clear_board();
