@@ -6,7 +6,8 @@
 It implements a simple card mathcing memory game using HTML/CSS and Javascript- the basic instruments reviewed in the course <br>
 </p>
 
-<img src="https://github.com/Wo11and/MemoryGame/assets/93873508/49cb4473-5c22-474b-8693-d3b859706414" width = 70%>
+
+![Screenshot from 2023-06-03 19-30-03](https://github.com/Wo11and/MemoryGame/assets/93873508/21e0432a-cd6b-49d3-856c-3b991c19075a)
 
 <i> The task required a login system with a leaderboard and I've used local storage to save plain-text credentials so I wouldn't put any sensitive information in the signup fields. </i>
 
